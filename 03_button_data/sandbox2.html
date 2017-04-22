@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style type="text/css">
+
+        .square {
+          fill: crimson;
+        }
+        button {
+          display: block;
+        }
+
+    </style>
+
+   
+</head>
+<body class="container">
+    <main>
+        <div class="jumbotron">
+            <h1>This is great</h1>
+            <p>Welcome to templating using EJS</p>
+            <p id="test"></p>
+
+            <svg width="100" height="100">
+              <rect class="square" x="10" y="20" width="30" height="30" />
+            </svg>
+
+            <button class="animate">Animate</button>
+            <button class="reset">Reset</button>
+        </div>
+    </main>
+
+    <footer>
+     
+    </footer>
+
+
+<script>
+//
+// Animate
+//
+var btn1 = document.querySelector('.animate');
+btn1.addEventListener('click', function() {
+
+  var rect     = document.querySelector('.square');
+  var from     = 10;  // x="10"
+  var to       = 70;  // x="70"
+  var duration = 500; // 500ms
+  var testx = 10;
+
+  var start = new Date().getTime();
+  var timer = setInterval(function() {
+    var time = new Date().getTime() - start;
+    // var x = easeInOutQuart(time, from, to - from, duration);
+    testx = testx + 2;
+    // rect.setAttribute('x', x);
+    rect.setAttribute('x', testx);
+    if (time >= duration) clearInterval(timer);
+  }, 1000 / 60);
+  rect.setAttribute('x', from);
+});
+
+//
+// http://easings.net/#easeInOutQuart
+//  t: current time
+//  b: beginning value
+//  c: change in value
+//  d: duration
+//
+function easeInOutQuart(t, b, c, d) {
+  if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
+  return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+}
+
+//
+// Reset
+//
+var btn2 = document.querySelector('.reset');
+btn2.addEventListener('click', function() {
+  document.querySelector('.square').setAttribute('x', 10);
+});
+
+
+</script>
+    
+</body>
+</html>

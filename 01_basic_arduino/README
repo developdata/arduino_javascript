@@ -1,0 +1,5 @@
+What you see on a compter when you have a short circuit.
+
+Because a USB device was drawing too much power from your computer, one or more of your USB devices have been disabled.
+
+if you change the  delay(100) in the arduino the serial data is sent to the front end more regulaly so it the animation of the svg is smooter
